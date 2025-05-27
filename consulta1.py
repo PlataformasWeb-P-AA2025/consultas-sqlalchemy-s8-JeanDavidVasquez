@@ -14,9 +14,7 @@ session = Session()
 
 
 
-entregas_arte = session.query(Entrega).join(Entrega.tarea).join(Tarea.curso).join(Curso.departamento).join(Curso.instructor).join(Entrega.estudiante).\
-    filter(Departamento.nombre == "Arte").all()
-
+entregas_arte = session.query(Entrega).join(Entrega.tarea).join(Tarea.curso).join(Curso.departamento).join(Curso.instructor).join(Entrega.estudiante).filter(Departamento.nombre == "Arte").all()
 
 for entrega in entregas_arte:
-    print(f"PRESENTAR: {entrega.tarea.titulo}Estudiante: {entrega.estudiante.nombre}Calificación: {entrega.calificacion}Instructor: {entrega.tarea.curso.instructor.nombre}Departamento: {entrega.tarea.curso.departamento.nombre}")
+    print(f"PRESENTAR: {entrega.tarea.titulo} Estudiante: {entrega.estudiante.nombre} Calificación: {entrega.calificacion} Instructor: {entrega.tarea.curso.instructor.nombre} Departamento: {entrega.tarea.curso.departamento.nombre}")

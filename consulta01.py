@@ -13,8 +13,8 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
-
+# Consulta para obtener todas las entregas relacionadas con el departamento "Arte"
 entregas_arte = session.query(Entrega).join(Entrega.tarea).join(Tarea.curso).join(Curso.departamento).join(Curso.instructor).join(Entrega.estudiante).filter(Departamento.nombre == "Arte").all()
-
+# Itera sobre cada entrega para imprimir información relevante
 for entrega in entregas_arte:
     print(f"PRESENTAR: {entrega.tarea.titulo} Estudiante: {entrega.estudiante.nombre} Calificación: {entrega.calificacion} Instructor: {entrega.tarea.curso.instructor.nombre} Departamento: {entrega.tarea.curso.departamento.nombre}")
